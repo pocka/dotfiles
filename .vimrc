@@ -43,7 +43,7 @@ if has('vim_starting')
 	set runtimepath+=~/.dotfiles/.vim/bundle/neobundle.vim/
 endif
 
-call neobundle#begin(expand('~/.dotfiles/.vim/bundle/'))
+call neobundle#begin(expand('~/.dotfiles/.vim/neobundle/'))
 
 " Let NeoBundle manage NeoBundle
 NeoBundleFetch 'Shougo/neobundle.vim'
@@ -56,7 +56,6 @@ NeoBundle 'wting/rust.vim'
 NeoBundle 'guns/vim-clojure-static'
 NeoBundle 'othree/yajs.vim'
 NeoBundle 'millermedeiros/vim-esformatter'
-NeoBundle 'tomasr/molokai'
 NeoBundle 'vim-airline/vim-airline'
 NeoBundle 'tpope/vim-fugitive'
 
@@ -69,7 +68,7 @@ filetype plugin indent on
 
 " Colorscheme setting
 syntax enable
-colorscheme monokai
+colorscheme molokai
 highlight Normal ctermbg = none
 highlight Visual ctermbg = 8
 highlight MatchParen cterm=none ctermbg=red ctermfg=white
