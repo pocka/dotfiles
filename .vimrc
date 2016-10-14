@@ -41,8 +41,8 @@ function! s:CloseIfOnlyControlWinLeft()
 if has('vim_starting')
 	set nocompatible               " Be iMproved
 	set runtimepath+=~/.dotfiles/.vim/bundle/neobundle.vim/
-	call neobundle#rc(expand('~/.dotfiles/.vim/bundle/'))
 endif
+
 call neobundle#begin(expand('~/.dotfiles/.vim/bundle/'))
 
 " Let NeoBundle manage NeoBundle
@@ -68,7 +68,8 @@ call neobundle#end()
 filetype plugin indent on
 
 " Colorscheme setting
-colorscheme molokai
+syntax enable
+colorscheme monokai
 highlight Normal ctermbg = none
 highlight Visual ctermbg = 8
 highlight MatchParen cterm=none ctermbg=red ctermfg=white
