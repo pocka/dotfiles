@@ -19,3 +19,8 @@ let b:undo_ftplugin = "setl fo< ofu< com< cms<"
 
 let &cpo = s:cpo_save
 unlet s:cpo_save
+
+set noexpandtab
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
