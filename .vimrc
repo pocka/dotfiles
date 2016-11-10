@@ -21,7 +21,7 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 
 let NERDTreeShowHidden=1
-autocmd VimEnter /develop/* execute 'NERDTreeCWD'
+autocmd VimEnter /* execute 'NERDTreeCWD'
 " autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType.isTabFree()) | q | endif
 function! s:CloseIfOnlyControlWinLeft()
 	  if winnr("$") != 1
