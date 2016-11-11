@@ -19,6 +19,7 @@ deploy:
 	@$(foreach val, $(DOTFILES), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
 
 init:
+	git submodule update --init
 
 clean:
 	@-$(foreach val, $(DOTFILES), rm -vrf $(HOME)/$(val);)
