@@ -1,10 +1,78 @@
+set nocompatible
+filetype on
+filetype plugin indent on
+syntax enable
+
+
+" ------------------------------------
+" Pathogen settings
+
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+
+call pathogen#infect()
+
+
+" ------------------------------------
+" NERDTree settings
+
+let NERDTreeShowHidden=1
+
+autocmd VimEnter * execute 'NERDTreeCWD'
+
+function! s:CloseIfOnlyControlWinLeft()
+	if winnr("$") != 1
+		return
+	endif
+
+	if (exists("t:NERDTreeBufName") && bufwinnr(t:NERDTreeBufName) != -1) || &buftype == 'quickfix'
+		q
+	endif
+endfunction
+
+augroup CloseIfOnlyControlWinLeft
+	au!
+	au BufEnter * call s:CloseIfOnlyControlWinLeft()
+augroup END
+
+let g:NERDTreeDirArrowExpandable = '+'
+let g:NERDTreeDirArrowCollapsible = '-'
+
+let g:NERDTreeIndicatorMapCustom = {
+	\ "Modified": "!",
+	\ "Staged": "@",
+	\ "Untracked": "+",
+	\ "Renamed": ">",
+	\ "Unmerged": "=",
+	\ "Deleted": "-",
+	\ "Dirty": "+",
+	\ "Unknown": "?"
+	\ }
+
+" ------------------------------------
+" Airline settings
+
+let g:airline_powerline_fonts = 1
+
+set laststatus=2
+
+
+" ------------------------------------
+" Syntastic settings
+
+let g:syntastic_typescript_checkers = ['tslint']
+
+" ------------------------------------
+" Indent settings
+
 set tabstop=4
 set shiftwidth=4
 set noexpandtab
 set softtabstop=4
 set number
 
-hi MatchParen ctermbg=1
+
+" ------------------------------------
+" Keymap settings
 
 nnoremap <S-j> <S-l>
 nnoremap <S-k> <S-h>
@@ -20,61 +88,17 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 
-let NERDTreeShowHidden=1
-autocmd VimEnter /* execute 'NERDTreeCWD'
-" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType.isTabFree()) | q | endif
-function! s:CloseIfOnlyControlWinLeft()
-	  if winnr("$") != 1
-		      return
-			    endif
-				  if (exists("t:NERDTreeBufName") && bufwinnr(t:NERDTreeBufName) != -1)
-					          \ || &buftype == 'quickfix'
-					      q
-						    endif
-						endfunction
-						augroup CloseIfOnlyControlWinLeft
-							  au!
-							    au BufEnter * call s:CloseIfOnlyControlWinLeft()
-							augroup END
-
-
-if has('vim_starting')
-	set nocompatible               " Be iMproved
-	set runtimepath+=~/.dotfiles/.vim/bundle/neobundle.vim/
-endif
-
-call neobundle#begin(expand('~/.dotfiles/.vim/neobundle/'))
-
-" Let NeoBundle manage NeoBundle
-NeoBundleFetch 'Shougo/neobundle.vim'
-" originalrepos on github
-
-NeoBundle 'Shougo/neobundle.vim'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'bronson/vim-trailing-whitespace'
-NeoBundle 'wting/rust.vim'
-NeoBundle 'guns/vim-clojure-static'
-NeoBundle 'othree/yajs.vim'
-NeoBundle 'millermedeiros/vim-esformatter'
-NeoBundle 'vim-airline/vim-airline'
-NeoBundle 'tpope/vim-fugitive'
-
+" ------------------------------------
 " Let jsx syntax for .js files
+
 let g:jsx_ext_required = 0
 
-call neobundle#end()
 
-filetype plugin indent on
-
+" ------------------------------------
 " Colorscheme setting
-syntax enable
+
 colorscheme molokai
+
 highlight Normal ctermbg = none
 highlight Visual ctermbg = 8
 highlight MatchParen cterm=none ctermbg=red ctermfg=white
-
-" Airline(statusline) setting
-
-filetype on
-au BufNewFile,BufRead *.rs set filetype=rust
-au BufNewFile,BufRead *.wisp set filetype=clojure
