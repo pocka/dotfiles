@@ -60,6 +60,7 @@ set laststatus=2
 " Syntastic settings
 
 let g:syntastic_typescript_checkers = ['tslint']
+au BufNewFile,BufRead *.scala setf scala
 
 " ------------------------------------
 " Indent settings
