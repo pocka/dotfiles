@@ -24,4 +24,4 @@ PROMPT='%{$fg[yellow]%}[%n@%m]%{${reset_color}%} %d${vcs_info_msg_0_}
 %# '
 
 # Key settings
-bindkey -v # Enable vim key bind
+bindkey -v # Enable vi key bind
