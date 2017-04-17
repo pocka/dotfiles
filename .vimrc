@@ -52,6 +52,8 @@ let g:NERDTreeIndicatorMapCustom = {
 " Airline settings
 
 let g:airline_powerline_fonts = 1
+let g:airline_left_sep = "\u2b80"
+let g:airline_right_sep = "\u2b82"
 
 set laststatus=2
 
