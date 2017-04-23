@@ -13,6 +13,9 @@ git submodule add <repositry url>
 
 ## Terminal font
 
+This zsh and vim config depends on powerline font.
+Please install it before using this config.
+
 ### Install
 
 ```shell
