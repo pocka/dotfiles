@@ -27,7 +27,7 @@ colors
 ## Color variables
 
 PROMPT='
-%F{233}%K{190} %n@%m %k%f%F{190}%K{240}${CH_ARROW}%F{231}${vcs_info_msg_0_}%f%k%F{240}%K{235}${CH_ARROW}%f%F{42} %d %k%f%F{235}${CH_ARROW}%f
+%F{233}%K{190} %B%n@%m%b %k%f%F{190}%K{240}${CH_ARROW}%F{231}${vcs_info_msg_0_}%f%k%F{240}%K{235}${CH_ARROW}%f%F{42} %d %k%f%F{235}${CH_ARROW}%f
 %# '
 POSTEDIT='
 '
