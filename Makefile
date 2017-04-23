@@ -11,14 +11,14 @@ DOTFILES := $(filter-out $(IGNORES), $(wildcard .??*))
 all: install
 
 .PHONY: install
-install: deploy init
+install: deploy update
 
 .PHONY: deploy
 deploy: .zsh/ls_colors.zsh
 	@$(foreach val, $(DOTFILES), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
 
-.PHONY: init
-init:
+.PHONY: update
+update:
 	git submodule update --init
 
 .PHONY: clean
