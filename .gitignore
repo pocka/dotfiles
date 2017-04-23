@@ -1,3 +1,5 @@
 .vim/neobundle
 
 *.swp
+
+.zsh/ls_colors.zsh
