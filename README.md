@@ -28,3 +28,11 @@ fc-scan /usr/share/fonts/RictyDiminished-for-Powerline
 
 This zsh prompt uses ansi 256 colors.
 (Not works on non-256 color terminal. e.g. console)
+
+## Screenshot
+
+### vim
+![ss-vim](https://github.com/pocka/dotfiles/blob/master/screenshots/vim.png?raw=true)
+
+### zsh
+![ss-zsh](https://github.com/pocka/dotfiles/blob/master/screenshots/zsh.png?raw=true)
