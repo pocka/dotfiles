@@ -7,17 +7,21 @@ IGNORES := .git .DS_Store .gitignore .gitmodules
 DOTFILES := $(filter-out $(IGNORES), $(wildcard .??*))
 
 
+.PHONY: all
 all: install
 
+.PHONY: install
 install: deploy init
-	@exec $$SHELL
 
+.PHONY: deploy
 deploy: .zsh/ls_colors.zsh
 	@$(foreach val, $(DOTFILES), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
 
+.PHONY: init
 init:
 	git submodule update --init
 
+.PHONY: clean
 clean:
 	@-$(foreach val, $(DOTFILES), rm -vrf $(HOME)/$(val);)
 
