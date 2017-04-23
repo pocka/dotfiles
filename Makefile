@@ -9,11 +9,8 @@ DOTFILES := $(filter-out $(IGNORES), $(wildcard .??*))
 
 all: install
 
-install: pull deploy init
+install: deploy init
 	@exec $$SHELL
-
-pull:
-	git pull origin master
 
 deploy:
 	@$(foreach val, $(DOTFILES), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
