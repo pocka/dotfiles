@@ -23,3 +23,8 @@ git clone https://github.com/mzyy94/RictyDiminished-for-Powerline/tree/master/vi
 cp RictyDiminished-for-Powerline/powerline-fontpatched /usr/share/fonts/RictyDiminished-for-Powerline
 fc-scan /usr/share/fonts/RictyDiminished-for-Powerline
 ```
+
+## Terminal color
+
+This zsh prompt uses ansi 256 colors.
+(Not works on non-256 color terminal. e.g. console)
