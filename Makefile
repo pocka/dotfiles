@@ -12,7 +12,7 @@ all: install
 install: deploy init
 	@exec $$SHELL
 
-deploy:
+deploy: .zsh/ls_colors.zsh
 	@$(foreach val, $(DOTFILES), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
 
 init:
@@ -20,3 +20,6 @@ init:
 
 clean:
 	@-$(foreach val, $(DOTFILES), rm -vrf $(HOME)/$(val);)
+
+.zsh/ls_colors.zsh: src/dircolors
+	dircolors $< > $@
