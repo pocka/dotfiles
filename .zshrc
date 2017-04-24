@@ -57,3 +57,7 @@ source ~/.zsh/ls_colors.zsh
 
 # Key settings
 bindkey -v # Enable vi key bind
+
+# Alias
+alias vi='vim'
+alias ls='ls -l --color=auto'
