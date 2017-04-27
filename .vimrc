@@ -48,6 +48,8 @@ let g:NERDTreeIndicatorMapCustom = {
 	\ "Unknown": "?"
 	\ }
 
+let g:NERDTreeIgnore = ['\~$', '\.swp$']
+
 " ------------------------------------
 " Airline settings
 
