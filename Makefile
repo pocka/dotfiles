@@ -2,7 +2,7 @@
 
 CURRENT_PATH := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 
-IGNORES := .git .DS_Store .gitignore .gitmodules
+IGNORES := .git .DS_Store .gitignore .gitmodules %.swp
 
 DOTFILES := $(filter-out $(IGNORES), $(wildcard .??*))
 
