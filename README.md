@@ -50,7 +50,7 @@ git submodule add <repositry url>
 
 ## Limitations
 
-## Terminal color
+### Terminal color
 
 This zsh prompt configuration heavily uses ansi 256 colors.
 (Not works on non-256 color terminal. e.g. console)
