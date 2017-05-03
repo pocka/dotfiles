@@ -64,7 +64,7 @@ alias vi='vim'
 alias ls='ls -l --color=auto'
 
 # History
-HISTFILE="$HOME/.zsh/history"
+HISTFILE="$HOME/.zsh_history"
 HISTSIZE=1000
 SAVEHIST=100000
 
