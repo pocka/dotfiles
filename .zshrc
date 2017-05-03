@@ -62,3 +62,12 @@ bindkey -v # Enable vi key bind
 # Alias
 alias vi='vim'
 alias ls='ls -l --color=auto'
+
+# History
+HISTFILE="$HOME/.zsh/history"
+HISTSIZE=1000
+SAVEHIST=100000
+
+setopt hist_ignore_dups # Ignore duplicate history
+setopt extended_history # Save timestamp
+setopt share_history # Share history state between process
