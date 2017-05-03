@@ -9,7 +9,7 @@ compinit
 autoload -Uz colors
 colors
 
-source ~/.zsh/colors.zsh
+source ~/.zsh/colors.zsh # Load color variables
 
 ## Symbol characters
 CH_BRANCH=$'\ue0a0'
