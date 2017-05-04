@@ -70,4 +70,3 @@ SAVEHIST=100000
 
 setopt hist_ignore_dups # Ignore duplicate history
 setopt extended_history # Save timestamp
-setopt share_history # Share history state between process
