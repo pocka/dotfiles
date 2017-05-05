@@ -6,16 +6,23 @@ IGNORES := .git .DS_Store .gitignore .gitmodules %.swp
 
 DOTFILES := $(filter-out $(IGNORES), $(wildcard .??*))
 
+FONTS = $(subst src/fonts/,,$(shell find src/fonts -type f -name "*.ttf"))
+
+.PHONY: default
+default: build
 
 .PHONY: all
 all: install
 
 .PHONY: install
-install: deploy update
+install: deploy
 
 .PHONY: deploy
-deploy: .zsh/ls_colors.zsh
+deploy: build
 	@$(foreach val, $(DOTFILES), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
+
+.PHONY: build
+build: update .zsh/ls_colors.zsh $(addprefix .fonts/,$(FONTS))
 
 .PHONY: update
 update:
@@ -30,12 +37,10 @@ clean:
 	dircolors $< >> $@
 
 
-# Font stuff
-FONTS = $(subst src/fonts/,,$(shell find src/fonts -type f -name "*.ttf"))
-
-FONTNAMES = $(subst src/fonts/,,$(FONTS))
-
-.PHONY: .fonts
 .fonts:
 	mkdir -p $@
-	@$(foreach font, $(FONTS), docker run --rm -u $(shell id -u):$(shell id -g) -v $(shell pwd)/src/fonts:/fonts/src -v $(shell pwd)/.fonts:/fonts/dest pocka/nerd-font-patcher --powerline -out /fonts/dest /fonts/src/$(font);)
+
+.fonts/%: .fonts
+	docker run --rm -u $(shell id -u):$(shell id -g) -v $(shell pwd)/src/fonts:/fonts/src -v $(shell pwd)/.fonts:/fonts/dest pocka/nerd-font-patcher --powerline -out /fonts/dest /fonts/src/$(subst .fonts/,,$@)
+	mkdir -p $(dir $@)
+	mv $</*\ Nerd\ Font.ttf $@
