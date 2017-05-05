@@ -49,6 +49,8 @@ git add submodule add <fonts repositry url>
 
 Then, `make` on the project root.
 
+Make rule will patch fonts with powerline icons.
+
 ## Limitations
 
 ### Terminal color
