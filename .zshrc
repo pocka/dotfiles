@@ -28,11 +28,11 @@ zstyle ":vcs_info:*" formats "%F{$BLACK}%c%u ${CH_BRANCH}%f%F{$BLACK} %B%b "
 zstyle ":vcs_info:*" actionformats "[%b|%a]"
 
 PROMPT_NORMAL=$'
-%F{$WHITE}%K{$PINK}%B NORMAL %b%f%k%F{$WHITE}%K{$PINK}${CH_LARROW}%f%k%F{$GREEN}%K{$WHITE}${CH_LARROW}%f%k%F{$BLACK}%K{$GREEN} %B%n@%m%b %k%f%F{$GREEN}%K{$WHITE}${CH_RARROW}%F{$BLACK}${vcs_info_msg_0_}%f%k%F{$WHITE}%K{$GREY}${CH_RARROW}%f%F{$BLACK} %B%d%b %k%f%F{$GREY}${CH_RARROW}%f
+%F{$WHITE}%K{$PINK}%B NORMAL %b%f%k%F{$WHITE}%K{$PINK}${CH_LARROW}%f%k%F{$GREEN}%K{$WHITE}${CH_LARROW}%f%k%F{$BLACK}%K{$GREEN}%B %n@%m %b%k%f%F{$GREEN}%K{$WHITE}${CH_RARROW}%F{$BLACK}${vcs_info_msg_0_}%f%k%F{$WHITE}%K{$GREY}${CH_RARROW}%f%F{$BLACK}%B %d %b%k%f%F{$GREY}${CH_RARROW}%f
 %# '
 
 PROMPT_INSERT=$'
-%F{$WHITE}%K{$CYAN}%B INSERT %b%f%k%F{$WHITE}%K{$CYAN}${CH_LARROW}%f%k%F{$GREEN}%K{$WHITE}${CH_LARROW}%f%k%F{$BLACK}%K{$GREEN} %B%n@%m%b %k%f%F{$GREEN}%K{$WHITE}${CH_RARROW}%F{$BLACK}${vcs_info_msg_0_}%f%k%F{$WHITE}%K{$GREY}${CH_RARROW}%f%F{$BLACK} %B%d%b %k%f%F{$GREY}${CH_RARROW}%f
+%F{$WHITE}%K{$CYAN}%B INSERT %b%f%k%F{$WHITE}%K{$CYAN}${CH_LARROW}%f%k%F{$GREEN}%K{$WHITE}${CH_LARROW}%f%k%F{$BLACK}%K{$GREEN}%B %n@%m %b%k%f%F{$GREEN}%K{$WHITE}${CH_RARROW}%F{$BLACK}${vcs_info_msg_0_}%f%k%F{$WHITE}%K{$GREY}${CH_RARROW}%f%F{$BLACK}%B %d %b%k%f%F{$GREY}${CH_RARROW}%f
 %# '
 
 function zle-line-init zle-keymap-select {
