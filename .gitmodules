@@ -27,7 +27,7 @@
 	url = https://github.com/tpope/vim-fugitive.git
 [submodule ".vim/bundle/vim-pug"]
 	path = .vim/bundle/vim-pug
-	url = git://github.com/digitaltoad/vim-pug.git
+	url = https://github.com/digitaltoad/vim-pug.git
 [submodule ".vim/bundle/syntastic"]
 	path = .vim/bundle/syntastic
 	url = https://github.com/scrooloose/syntastic.git
@@ -36,4 +36,4 @@
 	url = https://github.com/derekwyatt/vim-scala
 [submodule ".vim/bundle/elm-vim"]
 	path = .vim/bundle/elm-vim
-	url = git@github.com:ElmCast/elm-vim.git
+	url = https://github.com/ElmCast/elm-vim.git
