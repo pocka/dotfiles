@@ -5,24 +5,15 @@ My dotfiles.
 + vim
 + zsh
 + ls (modify output color to monokai-like style)
++ Terminal fonts (RictyDiminished)
 
 ## Requirements
 
 + `git` works
 + `make` works (tested on GNU Make)
 + `dircolors` works
++ `docker` works
 
-
-### Terminal font
-
-This zsh and vim config depends on powerline font.
-Please install it before using this config.
-
-```shell
-git clone https://github.com/mzyy94/RictyDiminished-for-Powerline/tree/master/vim-powerline-fontpatched
-cp RictyDiminished-for-Powerline/powerline-fontpatched /usr/share/fonts/RictyDiminished-for-Powerline
-fc-scan /usr/share/fonts/RictyDiminished-for-Powerline
-```
 
 ## Install
 
@@ -32,7 +23,7 @@ It will create symbolic link that indicates cloned repositry.
 ```shell
 git clone https://github.com/pocka/dotfiles
 cd dotfiles
-make
+make && make install
 ```
 
 
@@ -47,6 +38,16 @@ cd .vim/bundle
 git submodule add <repositry url>
 ```
 
+### Install fonts
+
+Put fonts into `src/fonts` or type below command
+
+```shell
+cd src/fonts
+git add submodule add <fonts repositry url>
+```
+
+Then, `make` on the project root.
 
 ## Limitations
 
