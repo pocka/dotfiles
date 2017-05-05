@@ -3,3 +3,5 @@
 *.xwd
 
 .zsh/ls_colors.zsh
+
+.fonts
