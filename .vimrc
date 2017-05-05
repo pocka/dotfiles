@@ -54,8 +54,8 @@ let g:NERDTreeIgnore = ['\~$', '\.swp$']
 " Airline settings
 
 let g:airline_powerline_fonts = 1
-let g:airline_left_sep = "\u2b80"
-let g:airline_right_sep = "\u2b82"
+let g:airline_left_sep = "\ue0b0"
+let g:airline_right_sep = "\ue0b2"
 
 set laststatus=2
 

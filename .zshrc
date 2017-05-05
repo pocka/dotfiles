@@ -13,8 +13,8 @@ source ~/.zsh/colors.zsh # Load color variables
 
 ## Symbol characters
 CH_BRANCH=$'\ue0a0'
-CH_RARROW=$'\u2b80'
-CH_LARROW=$'\u2b82'
+CH_RARROW=$'\ue0b0'
+CH_LARROW=$'\ue0b2'
 
 ## VCS information stuff
 autoload -Uz vcs_info
