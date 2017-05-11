@@ -48,7 +48,7 @@ let g:NERDTreeIndicatorMapCustom = {
 	\ "Unknown": "?"
 	\ }
 
-let g:NERDTreeIgnore = ['\~$', '\.swp$']
+let g:NERDTreeIgnore = ['\~$', '\.swp$', '\.pyc$']
 
 " ------------------------------------
 " Airline settings
