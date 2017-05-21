@@ -3,6 +3,8 @@ filetype on
 filetype plugin indent on
 syntax enable
 
+set autoread
+
 
 " ------------------------------------
 " Pathogen settings
