@@ -40,3 +40,6 @@
 [submodule "src/fonts/RictyDiminished"]
 	path = src/fonts/RictyDiminished
 	url = https://github.com/edihbrandon/RictyDiminished
+[submodule ".vim/bundle/swift.vim"]
+	path = .vim/bundle/swift.vim
+	url = https://github.com/keith/swift.vim.git
