@@ -4,6 +4,7 @@ setopt prompt_subst
 # Auto complete
 autoload -U compinit
 compinit
+zstyle ':completion:*' ignored-patterns 'exiv2'
 
 # Prompt settings
 autoload -Uz colors
