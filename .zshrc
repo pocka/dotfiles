@@ -68,6 +68,3 @@ SAVEHIST=100000
 
 setopt hist_ignore_dups # Ignore duplicate history
 setopt extended_history # Save timestamp
-
-# Load .profile if exists
-[[ -e ~/.profile ]] && emulate sh -c 'source ~/.profile'
