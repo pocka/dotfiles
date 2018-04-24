@@ -37,7 +37,7 @@ precmd () { vcs_info }
 zstyle ":vcs_info:git:*" check-for-changes true
 zstyle ":vcs_info:git:*" stagedstr "(staged changes)"
 zstyle ":vcs_info:git:*" unstagedstr "(unstaged changes)"
-zstyle ":vcs_info:*" formats "$(hexbox "%c${CH_BRANCH} %b%u")"
+zstyle ":vcs_info:*" formats "$(hexbox "${CH_BRANCH} %b%u%c")"
 zstyle ":vcs_info:*" actionformats "[%b|%a]"
 
 function zle-line-init zle-keymap-select {
