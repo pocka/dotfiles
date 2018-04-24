@@ -17,32 +17,36 @@ CH_BRANCH=$'\ue0a0'
 CH_RARROW=$'\ue0b0'
 CH_LARROW=$'\ue0b2'
 
+# Returns dark hexa-background text
+function hexbox() {
+	echo -e "%f%k%F{white}${CH_LARROW}%f%{$fg_bold[black]%}%K{white} ${1} %f%k%{$fg_no_bold[white]%}${CH_RARROW}%f"
+}
+
+# My custom prompt
+function custom-prompt() {
+	echo -e "
+%f%k%b%F{black}%B${1} %b%f$(hexbox "%n@%m")%F{black}%B %~ %b%f${vcs_info_msg_0_}
+%{$fg_no_bold[white]%}%# "
+}
+
 ## VCS information stuff
 autoload -Uz vcs_info
 
 precmd () { vcs_info }
 
 zstyle ":vcs_info:git:*" check-for-changes true
-zstyle ":vcs_info:git:*" stagedstr "%F{$GREEN}"
-zstyle ":vcs_info:git:*" unstagedstr "%F{$PINK}"
-zstyle ":vcs_info:*" formats "%F{$BLACK}%c%u ${CH_BRANCH}%f%F{$BLACK} %B%b "
+zstyle ":vcs_info:git:*" stagedstr "(staged changes)"
+zstyle ":vcs_info:git:*" unstagedstr "(unstaged changes)"
+zstyle ":vcs_info:*" formats "$(hexbox "%c${CH_BRANCH} %b%u")"
 zstyle ":vcs_info:*" actionformats "[%b|%a]"
-
-PROMPT_NORMAL=$'
-%F{$WHITE}%K{$PINK}%B NORMAL %b%f%k%F{$WHITE}%K{$PINK}${CH_LARROW}%f%k%F{$GREEN}%K{$WHITE}${CH_LARROW}%f%k%F{$BLACK}%K{$GREEN}%B %n@%m %b%k%f%F{$GREEN}%K{$WHITE}${CH_RARROW}%F{$BLACK}${vcs_info_msg_0_}%f%k%F{$WHITE}%K{$GREY}${CH_RARROW}%f%F{$BLACK}%B %d %b%k%f%F{$GREY}${CH_RARROW}%f
-%# '
-
-PROMPT_INSERT=$'
-%F{$WHITE}%K{$CYAN}%B INSERT %b%f%k%F{$WHITE}%K{$CYAN}${CH_LARROW}%f%k%F{$GREEN}%K{$WHITE}${CH_LARROW}%f%k%F{$BLACK}%K{$GREEN}%B %n@%m %b%k%f%F{$GREEN}%K{$WHITE}${CH_RARROW}%F{$BLACK}${vcs_info_msg_0_}%f%k%F{$WHITE}%K{$GREY}${CH_RARROW}%f%F{$BLACK}%B %d %b%k%f%F{$GREY}${CH_RARROW}%f
-%# '
 
 function zle-line-init zle-keymap-select {
 	case $KEYMAP in
 		vicmd)
-			PROMPT=$PROMPT_NORMAL
+			PROMPT=$(custom-prompt "NORMAL")
 			;;
 		main|viins)
-			PROMPT=$PROMPT_INSERT
+			PROMPT=$(custom-prompt "INSERT")
 			;;
 	esac
 	zle reset-prompt
