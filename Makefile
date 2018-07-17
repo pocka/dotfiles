@@ -20,7 +20,7 @@ install: deploy
 .PHONY: deploy
 deploy: build
 	@$(foreach val, $(DOTFILES), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
-	fc-scan ~/.fonts
+	fc-scan .fonts
 	fc-cache -vf
 
 .PHONY: build
