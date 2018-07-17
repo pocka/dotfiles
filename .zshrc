@@ -73,6 +73,11 @@ SAVEHIST=100000
 setopt hist_ignore_dups # Ignore duplicate history
 setopt extended_history # Save timestamp
 
+# Tilix config (Fix VTE issue)
+if [[ $TILIX_ID ]]; then
+	source /etc/profile.d/vte.sh
+fi
+
 # Loads NVM
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
