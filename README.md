@@ -5,14 +5,14 @@ My dotfiles.
 + vim
 + zsh
 + ls (modify output color to monokai-like style)
-+ Terminal fonts (RictyDiminished)
++ Terminal fonts ([Cica](https://github.com/miiton/Cica))
 
 ## Requirements
 
 + `git` works
 + `make` works (tested on GNU Make)
 + `dircolors` works
-+ `docker` works
++ `unzip`
 
 
 ## Install
@@ -26,6 +26,14 @@ cd dotfiles
 make && make install
 ```
 
+Then set colors for your terminal emulator. Monokai recommended.
+You can generate setup script with [terminal.sexy](https://terminal.sexy/).
+If you're using Gnome Terminal, there is a script that sets monokai colors: `gnome-terminal-color.sh`.
+
+```sh
+PROFILE_NAME=your-profile-name PROFILE_SLUG=your-profile-id ./gnome-terminal-color.sh
+```
+
 
 ## Notes
 
@@ -37,27 +45,6 @@ Since this uses [pathogen](https://github.com/tpope/vim-pathogen), add plugin re
 cd .vim/bundle
 git submodule add <repositry url>
 ```
-
-### Install fonts
-
-Put fonts into `src/fonts` or type below command
-
-```shell
-cd src/fonts
-git add submodule add <fonts repositry url>
-```
-
-Then, `make` on the project root.
-
-Make rule will patch fonts with powerline icons.
-
-## Limitations
-
-### Terminal color
-
-This zsh prompt configuration heavily uses ansi 256 colors.
-(Not works on non-256 color terminal. e.g. console)
-
 
 ## Screenshot
 
