@@ -13,19 +13,19 @@ colors
 source ~/.zsh/colors.zsh # Load color variables
 
 ## Symbol characters
-CH_BRANCH=$'\ue0a0'
-CH_RARROW=$'\ue0b0'
-CH_LARROW=$'\ue0b2'
-
-# Returns dark hexa-background text
-function hexbox() {
-	echo -e "%f%k%F{white}${CH_LARROW}%f%{$fg_bold[black]%}%K{white} ${1} %f%k%{$fg_no_bold[white]%}${CH_RARROW}%f"
-}
+CH_BRANCH=$'\uf418'
+CH_RTRI=$'\ue0b0'
+CH_LOCATION=$'\uf450'
+CH_DOT=$'\uf444'
+CH_PERSON=$'\uf415'
+CH_PEN=$'\uf448'
+CH_ZAP=$'\u26a1'
+CH_FILE=$'\uf15b'
 
 # My custom prompt
 function custom-prompt() {
 	echo -e "
-%f%k%b%F{black}%B${1} %b%f$(hexbox "%n@%m")%F{black}%B %~ %b%f${vcs_info_msg_0_}
+%f%k%b%F{white}%K{8} ${1} ${CH_DOT}  %F{green}${CH_PERSON}%F{white}  %n@%m ${CH_DOT}  %F{blue}${CH_LOCATION}%F{white}  %~ ${vcs_info_msg_0_} %F{8}%k${CH_RTRI}%f
 %{$fg_no_bold[white]%}%# "
 }
 
@@ -35,18 +35,18 @@ autoload -Uz vcs_info
 precmd () { vcs_info }
 
 zstyle ":vcs_info:git:*" check-for-changes true
-zstyle ":vcs_info:git:*" stagedstr "(staged changes)"
-zstyle ":vcs_info:git:*" unstagedstr "(unstaged changes)"
-zstyle ":vcs_info:*" formats "$(hexbox "${CH_BRANCH} %b%u%c")"
+zstyle ":vcs_info:git:*" stagedstr "%F{green}${CH_FILE}%F{white}"
+zstyle ":vcs_info:git:*" unstagedstr "%F{red}${CH_FILE}%F{white}"
+zstyle ":vcs_info:*" formats "${CH_DOT}  %F{yellow}${CH_BRANCH}%F{white}  %b %c%u "
 zstyle ":vcs_info:*" actionformats "[%b|%a]"
 
 function zle-line-init zle-keymap-select {
 	case $KEYMAP in
 		vicmd)
-			PROMPT=$(custom-prompt "NORMAL")
+			PROMPT=$(custom-prompt "%F{1}${CH_ZAP}%F{7} NORMAL")
 			;;
 		main|viins)
-			PROMPT=$(custom-prompt "INSERT")
+			PROMPT=$(custom-prompt "%F{1}${CH_PEN}%F{7}  INSERT")
 			;;
 	esac
 	zle reset-prompt
