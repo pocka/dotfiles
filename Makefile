@@ -6,8 +6,6 @@ IGNORES := .git .DS_Store .gitignore .gitmodules %.swp
 
 DOTFILES := $(filter-out $(IGNORES), $(wildcard .??*))
 
-FONTS = $(subst src/fonts/,,$(shell find src/fonts -type f -name "*.ttf"))
-
 .PHONY: default
 default: build
 
@@ -24,7 +22,7 @@ deploy: build
 	fc-cache -vf
 
 .PHONY: build
-build: update .zsh/ls_colors.zsh $(addprefix .fonts/,$(FONTS))
+build: update .zsh/ls_colors.zsh .fonts
 
 .PHONY: update
 update:
@@ -41,8 +39,6 @@ clean:
 
 .fonts:
 	mkdir -p $@
-
-.fonts/%: .fonts
-	docker run --rm -u $(shell id -u):$(shell id -g) -v $(shell pwd)/src/fonts:/fonts/src -v $(shell pwd)/.fonts:/fonts/dest pocka/nerd-font-patcher --powerline -out /fonts/dest /fonts/src/$(subst .fonts/,,$@)
-	mkdir -p $(dir $@)
-	mv $</*\ Nerd\ Font.ttf $@
+	curl -sL https://github.com/miiton/Cica/releases/download/v4.1.1/Cica-v4.1.1.zip > Cica.zip
+	unzip Cica.zip -d .fonts
+	rm Cica.zip
