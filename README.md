@@ -28,7 +28,7 @@ make && make install
 
 Then set colors for your terminal emulator. Monokai recommended.
 You can generate setup script with [terminal.sexy](https://terminal.sexy/).
-If you're using Gnome Terminal, there is a script that sets monokai colors: `gnome-terminal-color.sh`.
+If you're using Gnome Terminal, we provide a script that sets monokai colors: `gnome-terminal-color.sh`.
 
 ```sh
 PROFILE_NAME=your-profile-name PROFILE_SLUG=your-profile-id ./gnome-terminal-color.sh
