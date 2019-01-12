@@ -19,7 +19,7 @@ call pathogen#infect()
 
 let NERDTreeShowHidden=1
 
-autocmd VimEnter * execute 'NERDTreeCWD'
+autocmd VimEnter * if &filetype !=# 'gitcommit' | NERDTreeCWD | endif
 
 function! s:CloseIfOnlyControlWinLeft()
 	if winnr("$") != 1
