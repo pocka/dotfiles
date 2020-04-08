@@ -2,7 +2,9 @@
 setopt prompt_subst
 
 # Auto complete
-autoload -U compinit
+zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.zsh
+fpath=(~/.zsh $fpath)
+autoload -Uz compinit
 compinit
 zstyle ':completion:*' ignored-patterns 'exiv2'
 
@@ -13,19 +15,14 @@ colors
 source ~/.zsh/colors.zsh # Load color variables
 
 ## Symbol characters
-CH_BRANCH=$'\uf418'
-CH_RTRI=$'\ue0b0'
-CH_LOCATION=$'\uf450'
-CH_DOT=$'\uf444'
-CH_PERSON=$'\uf415'
-CH_PEN=$'\uf448'
-CH_ZAP=$'\u26a1'
-CH_FILE=$'\uf15b'
+CH_BRANCH=$'\ue0a0'
+CH_RARROW=$'\ue0b0'
+CH_LARROW=$'\ue0b2'
 
 # My custom prompt
 function custom-prompt() {
 	echo -e "
-%f%k%b%F{white}%K{8} ${1} ${CH_DOT}  %F{green}${CH_PERSON}%F{white}  %n@%m ${CH_DOT}  %F{blue}${CH_LOCATION}%F{white}  %~ ${vcs_info_msg_0_} %F{8}%k${CH_RTRI}%f
+%f%k%b${1}%{$fg_bold[white]%} %1d %f%k${vcs_info_msg_0_}%k%f%b
 %{$fg_no_bold[white]%}%# "
 }
 
@@ -35,18 +32,18 @@ autoload -Uz vcs_info
 precmd () { vcs_info }
 
 zstyle ":vcs_info:git:*" check-for-changes true
-zstyle ":vcs_info:git:*" stagedstr "%F{green}${CH_FILE}%F{white}"
-zstyle ":vcs_info:git:*" unstagedstr "%F{red}${CH_FILE}%F{white}"
-zstyle ":vcs_info:*" formats "${CH_DOT}  %F{yellow}${CH_BRANCH}%F{white}  %b %c%u "
+zstyle ":vcs_info:git:*" stagedstr "%{$fg_bold[green]%}*%f%b"
+zstyle ":vcs_info:git:*" unstagedstr "%{$fg_bold[red]%}*%f%b"
+zstyle ":vcs_info:*" formats "%{$fg_bold[white]%}... ${CH_BRANCH} %b%c%u%f"
 zstyle ":vcs_info:*" actionformats "[%b|%a]"
 
 function zle-line-init zle-keymap-select {
 	case $KEYMAP in
 		vicmd)
-			PROMPT=$(custom-prompt "%F{1}${CH_ZAP}%F{7} NORMAL")
+			PROMPT=$(custom-prompt "%{$fg_bold[black]%}%{$bg[green]%} N %{$fg[green]%}%k${CH_RARROW}%f%b")
 			;;
 		main|viins)
-			PROMPT=$(custom-prompt "%F{1}${CH_PEN}%F{7}  INSERT")
+			PROMPT=$(custom-prompt "%{$fg_bold[black]%}%{$bg[blue]%} I %{$fg[blue]%}%k${CH_RARROW}%f%b")
 			;;
 	esac
 	zle reset-prompt
@@ -79,6 +76,9 @@ if [[ $TILIX_ID ]]; then
 fi
 
 # Loads NVM
-export NVM_DIR="$HOME/.nvm"
+export NVM_DIR="$(realpath $HOME/.nvm)"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# GPG client setting
+export GPG_TTY=$(tty)
