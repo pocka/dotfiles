@@ -22,6 +22,7 @@ CH_LARROW=$'\ue0b2'
 # My custom prompt
 function custom-prompt() {
 	echo -e "
+
 %f%k%b${1}%{$fg_bold[white]%} %1d %f%k${vcs_info_msg_0_}%k%f%b
 %{$fg_no_bold[white]%}%# "
 }
